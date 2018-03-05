@@ -1,0 +1,16 @@
+{
+    "name": "traderinteractive/filter-floats",
+    "description": "A filtering implementation for verifying correct data and performing typical modifications to floats",
+    "keywords": [
+        "utility",
+        "float",
+        "filter"
+    ],
+    "license": "MIT",
+    "configure": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^7.0"
+    }
+}
