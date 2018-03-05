@@ -26,6 +26,22 @@ The recommended way of using this library in your project is to add a `composer.
 composer require traderinteractive/filter-floats
 ```
 
+## Included Filters
+
+### Floats::filter
+
+This filter verifies that the arguments are of the proper numeric type and allow for bounds checking. The second parameter can be set to true to allow null values through without an error (they will stay null and not get converted to false). The next two parameters are the min and max bounds and can be used to limit the domain of allowed numbers.
+
+The final parameter can be set to true to cast integers to floats. Without this, integers will fail validation.
+
+Non-numeric strings will fail validation, and numeric strings will be cast.
+
+The following checks that $value is a float between 1.0 and 100.00 inclusive, and returns the float (after casting it if it was a string or integer).
+
+```php
+$value = \TraderInteractive\Filter\Floats::filter($value, false, 1.0, 100.00, true);
+```
+
 ## Project Build
 
 With a checkout of the code get [Composer](http://getcomposer.org) in your PATH and run:
