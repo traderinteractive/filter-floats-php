@@ -88,109 +88,109 @@ final class FloatsTest extends TestCase
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage "true" $value is not a string
      */
     public function filterNonStringOrFloat()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('"true" $value is not a string');
         Floats::filter(true);
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @exceptedExceptionMessage  does not pass is_numeric
      */
     public function filterEmptyString()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage(' does not pass is_numeric');
         Floats::filter('');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage  does not pass is_numeric
      */
     public function filterWhitespaceString()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage(' does not pass is_numeric');
         Floats::filter('   ');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage 123-4 does not pass is_numeric
      */
     public function filterNonDigitString()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('123-4 does not pass is_numeric');
         Floats::filter('123-4');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
      */
     public function filterHexString()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
         Floats::filter('0xFF');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage 1. 0 does not pass is_numeric
      */
     public function filterRogueSpaceStringAfterPeriod()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('1. 0 does not pass is_numeric');
         Floats::filter('1. 0');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage 1 0 does not pass is_numeric
      */
     public function filterRogueSpaceStringBetweenDigits()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('1 0 does not pass is_numeric');
         Floats::filter('1 0');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage 1e999999999999 overflow
      */
     public function filterOverflow()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('1e999999999999 overflow');
         Floats::filter('1e999999999999');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage -1e999999999999 overflow
      */
     public function filterUnderflow()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('-1e999999999999 overflow');
         Floats::filter('-1e999999999999');
     }
 
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage -1 is less than 0
      */
     public function filterLessThanMin()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('-1 is less than 0');
         Floats::filter(-1.0, false, 0.0);
     }
 
@@ -206,11 +206,11 @@ final class FloatsTest extends TestCase
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage 1 is greater than 0
      */
     public function filterGreaterThanMax()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('1 is greater than 0');
         Floats::filter(1.0, false, null, 0.0);
     }
 
@@ -235,11 +235,11 @@ final class FloatsTest extends TestCase
     /**
      * @test
      * @covers ::filter
-     * @expectedException \TraderInteractive\Exceptions\FilterException
-     * @expectedExceptionMessage "1" $value is not a string
      */
     public function filterCastIntsIsFalse()
     {
+        $this->expectException(\TraderInteractive\Exceptions\FilterException::class);
+        $this->expectExceptionMessage('"1" $value is not a string');
         Floats::filter(1, false, null, null, false);
     }
 }
