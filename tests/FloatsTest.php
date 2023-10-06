@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \TraderInteractive\Filter\Floats
+ * @covers ::<private>
  */
 final class FloatsTest extends TestCase
 {
